@@ -17,16 +17,16 @@ public class UserController {
 
 
 
-    @GetMapping("/register")
+    @GetMapping("/login")
     public String register(Model model){
         model.addAttribute("userDto",new UserDto());
-        return "/user/register";
+        return "/user/login";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/login")
     public String register(@Valid @ModelAttribute("userDto") UserDto userDto, BindingResult result){
         if(result.hasErrors()){
-            return "redirect:/user/register";
+            return "redirect:/user/login";
         }
 
 

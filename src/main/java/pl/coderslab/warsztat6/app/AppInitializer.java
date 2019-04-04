@@ -28,4 +28,6 @@ public class AppInitializer implements WebApplicationInitializer {
         fr.addMappingForUrlPatterns(null, true, "/*");
 
     }
+
+
 }
