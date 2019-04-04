@@ -1,6 +1,7 @@
 package pl.coderslab.warsztat6.entity;
 
 import org.mindrot.jbcrypt.BCrypt;
+import pl.coderslab.warsztat6.dto.UserDto;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +26,13 @@ public class User {
     public User() {
     }
 
+
+    public User(UserDto userDto) {
+        this.firstName = userDto.getFirstName();
+        this.lastName = userDto.getLastName();
+        setPassword(userDto.getPassword());
+        this.email = userDto.getEmail();
+    }
 
     public String getPassword() {
         return password;
