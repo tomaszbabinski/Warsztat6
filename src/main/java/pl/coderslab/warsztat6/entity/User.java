@@ -15,8 +15,7 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    private String password;
-    private String passwordRepeat;
+    private String hashedPassword;
     @Column(unique = true)
     private String email;
 
@@ -30,13 +29,11 @@ public class User {
     public User(UserDto userDto) {
         this.firstName = userDto.getFirstName();
         this.lastName = userDto.getLastName();
-        setPassword(userDto.getPassword());
+        setHashedPassword(userDto.getPassword());
         this.email = userDto.getEmail();
     }
 
-    public String getPassword() {
-        return password;
-    }
+
 
     public String getFullName(){
         return firstName+" "+lastName;
@@ -66,12 +63,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+    public void setHashedPassword(String password) {
+        this.hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    public boolean isPasswordCorrect(String password) {
-        return BCrypt.checkpw(password, this.password);
+    public boolean isPasswordCorrect(String candidate) {
+        return BCrypt.checkpw(candidate, this.hashedPassword);
     }
 
     public String getEmail() {
@@ -90,11 +87,5 @@ public class User {
         this.tweets = tweets;
     }
 
-    public String getPasswordRepeat() {
-        return passwordRepeat;
-    }
 
-    public void setPasswordRepeat(String passwordRepeat) {
-        this.passwordRepeat = passwordRepeat;
-    }
 }
