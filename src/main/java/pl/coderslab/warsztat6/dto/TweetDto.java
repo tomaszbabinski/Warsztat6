@@ -3,6 +3,7 @@ package pl.coderslab.warsztat6.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
+import pl.coderslab.warsztat6.entity.User;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ public class TweetDto {
 
     private LocalDateTime created;
 
-    private UserDto userDto;
+    private User user;
 
     public String getFullDate(){
         return this.created.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));

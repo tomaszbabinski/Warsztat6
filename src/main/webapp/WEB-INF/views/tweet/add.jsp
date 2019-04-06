@@ -6,7 +6,7 @@
 <body>
 <div class="check">Add Tweet</div>
 <div>
-    <form:form modelAttribute="tweet">
+    <form:form modelAttribute="tweetDto">
     <label for="title">title</label>
     <form:input path="title" id="title" type="text"></form:input>
     <form:errors path="title"></form:errors>

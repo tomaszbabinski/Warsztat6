@@ -1,10 +1,12 @@
 package pl.coderslab.warsztat6.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import pl.coderslab.warsztat6.dto.TweetDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "tweeter_tweet")
@@ -28,6 +30,13 @@ public class Tweet {
     private User user;
 
     public Tweet() {
+    }
+
+    public Tweet(TweetDto tweetDto){
+        this.title = tweetDto.getTitle();
+        this.created = tweetDto.getCreated();
+        this.tweetText = tweetDto.getContent();
+        this.user = tweetDto.getUser();
     }
 
     public User getUser() {
@@ -68,6 +77,10 @@ public class Tweet {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public String getFullDate(){
+        return this.created.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
 }
 
