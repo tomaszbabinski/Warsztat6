@@ -1,0 +1,18 @@
+body {
+    background-color: lightblue;
+    color: crimson;
+}
+
+div {
+    background-color: darkcyan;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 800px;
+
+}
+
+.check{
+    color: snow;
+    font-weight: bold;
+}

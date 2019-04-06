@@ -1,18 +1,13 @@
-
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
+    <%@ include file="../jspf/head_config.jspf" %>
     <title>Twitter App - Register user</title>
 </head>
 <body>
-
+<div class="check">Login user</div>
+<div>
 <form:form modelAttribute="user">
-    <div>Login user</div>
-    <div>
+
         <label for="email">Email</label>
         <form:input path="email" id="email" type="email"></form:input>
         <form:errors path="email"></form:errors>
