@@ -39,7 +39,7 @@ public class LoggedInCheckFilter extends OncePerRequestFilter {
     }
 
     private boolean allowedToEveryone(String url) {
-        if(url.endsWith("/user/register") || (url.endsWith("/user/login"))){
+        if(url.endsWith("/user/register") || (url.endsWith("/user/login") || url.endsWith("/resources/css/style.css"))){
             return true;
         }
         return false;

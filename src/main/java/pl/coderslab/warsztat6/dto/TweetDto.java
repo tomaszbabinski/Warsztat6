@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +14,7 @@ public class TweetDto {
 
     private Long id;
 
-
+    @NotBlank
     private String title;
 
     @NotBlank

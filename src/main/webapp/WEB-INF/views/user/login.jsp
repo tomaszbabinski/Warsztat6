@@ -18,11 +18,12 @@
         <form:errors path="password"></form:errors>
     </div>
     <div>
-        <input type="submit">
+        <input type="submit" value="Log in">
     </div>
     <div>
-        <c:out value="${msg}"></c:out>
+        <c:out value="${message}"></c:out>
     </div>
+    <div><button><a href="/user/register">Register</a></button></div>
 </form:form>
 
 </body>

@@ -16,3 +16,15 @@ div {
     color: snow;
     font-weight: bold;
 }
+
+.menu-item{
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+
+a{
+    color: skyblue;
+    text-decoration: none;
+
+}
