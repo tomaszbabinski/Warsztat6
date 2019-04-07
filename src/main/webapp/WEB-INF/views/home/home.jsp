@@ -7,10 +7,26 @@
 
     <div class="check">
         <div class="menu-item"><a href="#">Home</a> </div>
-        <div class="menu-item"><a href="#">User</a> </div>
+        <div class="menu-item"><a href="/user/showTweets">User</a> </div>
         <div class="menu-item"><a href="#">Tweets</a> </div>
         <div class="menu-item"><a href="/user/logout">Logout</a> </div>
     </div>
+
+    <div class="check">Add Tweet</div>
+    <div>
+        <form:form modelAttribute="tweetDto" action="/tweet/add" method="post">
+        <label for="title">title</label>
+        <form:input path="title" id="title" type="text"></form:input>
+        <form:errors path="title"></form:errors>
+        <label for="content">Content</label>
+        <form:input path="content" id="content" type="text"></form:input>
+        <form:errors path="content"></form:errors>
+          <form:hidden path="id" />
+        <input type="submit" value="Add the Tweet">
+    </div>
+
+    </form:form>
+
 
     <div>
         <table align="center">

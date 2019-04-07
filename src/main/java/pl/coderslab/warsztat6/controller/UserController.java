@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.warsztat6.dto.UserDto;
 import pl.coderslab.warsztat6.entity.User;
+import pl.coderslab.warsztat6.repository.TweetRepository;
 import pl.coderslab.warsztat6.repository.UserRepository;
 
 import javax.servlet.http.HttpSession;
@@ -19,13 +20,13 @@ import javax.validation.Valid;
 public class UserController {
 
     private UserRepository userRepository;
+    private TweetRepository tweetRepository;
 
     @Autowired
-    public UserController(UserRepository userRepository){
+    public UserController(UserRepository userRepository, TweetRepository tweetRepository) {
         this.userRepository = userRepository;
+        this.tweetRepository = tweetRepository;
     }
-
-
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -75,5 +76,12 @@ public class UserController {
         s.removeAttribute("loggedInUser");
 
         return "redirect:login";
+    }
+
+    @GetMapping("/showTweets")
+    public String showAllTweets(Model model, HttpSession session){
+        model.addAttribute("tweets",tweetRepository.findAllByUser((User) session.getAttribute("loggedInUser")));
+        model.addAttribute("fullName",((User) session.getAttribute("loggedInUser")).getFullName());
+        return "/user/userTweets";
     }
 }
