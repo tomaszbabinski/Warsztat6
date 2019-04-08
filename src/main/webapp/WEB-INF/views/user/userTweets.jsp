@@ -5,6 +5,7 @@
 </head>
 <body>
     <div>
+        <%@include file="../jspf/menu.jspf"%>
         <p>Witaj ${fullName} to Twoje wpisy:</p>
 
         <table align="center">

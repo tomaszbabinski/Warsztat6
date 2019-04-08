@@ -39,7 +39,7 @@
         <c:forEach items="${tweets}" var="tweet">
             <tr>
                 <td align="center">${tweet.fullDate}</td>
-                <td align="center">${tweet.title}</td>
+                <td align="center"><a href="/tweet/getTweet/${tweet.id}">${tweet.title}</a></td>
                 <td align="center">${tweet.tweetText}</td>
                 <td align="center">${tweet.user.fullName}</td>
 
