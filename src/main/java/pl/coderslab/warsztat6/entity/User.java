@@ -22,6 +22,11 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
     private List<Tweet> tweets;
 
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+
+
+
     public User() {
     }
 
@@ -31,6 +36,14 @@ public class User {
         this.lastName = userDto.getLastName();
         setHashedPassword(userDto.getPassword());
         this.email = userDto.getEmail();
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
 

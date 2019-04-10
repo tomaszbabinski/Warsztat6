@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Entity
 @Table(name = "tweeter_tweet")
@@ -29,6 +30,11 @@ public class Tweet {
     @ManyToOne
     private User user;
 
+    @OneToMany(mappedBy = "tweet")
+    private List<Comment> comments;
+
+
+
     public Tweet() {
     }
 
@@ -37,6 +43,14 @@ public class Tweet {
         this.created = tweetDto.getCreated();
         this.tweetText = tweetDto.getContent();
         this.user = tweetDto.getUser();
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public User getUser() {

@@ -35,4 +35,6 @@ public class UserDto {
 
     private List<TweetDto> tweets = new ArrayList<>();
 
+    private List<CommentDto> comments = new ArrayList<>();
+
     }
