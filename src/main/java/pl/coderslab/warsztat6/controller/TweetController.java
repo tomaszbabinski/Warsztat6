@@ -51,8 +51,12 @@ public class TweetController {
 
     @GetMapping("/getTweet/{id}")
     public String getTweet(@PathVariable Long id,Model model){
-        model.addAttribute("tweet",tweetRepository.findById(id));
-        model.addAttribute("commentDto",new CommentDto());
+        Tweet tweet = tweetRepository.findById(id);
+        model.addAttribute("tweet",tweet);
+        CommentDto commentDto = new CommentDto();
+        commentDto.setTweet(tweet);
+        commentDto.setUser(tweet.getUser());
+        model.addAttribute("commentDto",commentDto);
         return "/tweet/tweetInfo";
 
     }

@@ -1,5 +1,7 @@
 package pl.coderslab.warsztat6.entity;
 
+import pl.coderslab.warsztat6.dto.CommentDto;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,12 @@ public class Comment {
     private String text;
 
     public Comment() {
+    }
+
+    public Comment(CommentDto commentDto){
+        this.user = commentDto.getUser();
+        this.tweet = commentDto.getTweet();
+        this.text = commentDto.getText();
     }
 
     public Long getId() {

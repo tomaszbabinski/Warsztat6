@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,12 +31,13 @@ public class Tweet {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "tweet")
+    @OneToMany(mappedBy = "tweet",fetch = FetchType.EAGER)
     private List<Comment> comments;
 
 
 
     public Tweet() {
+        comments = new ArrayList<>();
     }
 
     public Tweet(TweetDto tweetDto){
@@ -95,6 +97,10 @@ public class Tweet {
 
     public String getFullDate(){
         return this.created.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+    }
+
+    public String getListSize(){
+        return String.valueOf(comments.size());
     }
 }
 

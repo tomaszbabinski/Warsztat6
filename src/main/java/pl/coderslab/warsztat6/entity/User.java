@@ -22,7 +22,7 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE)
     private List<Tweet> tweets;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Comment> comments;
 
 
